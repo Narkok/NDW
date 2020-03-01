@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RollerHoverController : MonoBehaviour
+public class RollerController : MonoBehaviour
 {
 
-    [SerializeField] private Animator _anim;
-    [SerializeField] private GameObject _slider;
+    private Animator _anim;
+    private GameObject _slider;
 
     private bool isPressed = false;
     private bool isHovered = false;

@@ -4,24 +4,23 @@ using System.Linq;
 using UnityEngine;
 
 
-public class Character : MonoBehaviour
-{
-    public enum Type
-    {
+public class Character : MonoBehaviour {
+
+    public enum Type {
         Knight,
         Archer,
         King
     }
 
-    public enum Status
-    {
+
+    public enum State {
         Walk,
         Attack,
         Wait,
         Dead
     }
 
-    public Type type = Type.Knight;
-    public Status status = Status.Walk;
 
+    public Type type = Type.Knight;
+    public State state = State.Walk;
 }

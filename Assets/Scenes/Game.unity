@@ -156,9 +156,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackScreen: {fileID: 1748635072}
-  moon: {fileID: 1711050822}
   startMenuButtons: {fileID: 523498962}
   canvas: {fileID: 1201175666}
+  skipMenu: 1
 --- !u!4 &112333223 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2666376396826672032, guid: 893e676440b9046bc9891d921c3397e2,
@@ -933,18 +933,6 @@ Transform:
   m_Father: {fileID: 1711050824}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1390612819 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 386161470756006115, guid: e084821fe50ed4690bd4358386a1f3ac,
-    type: 3}
-  m_PrefabInstance: {fileID: 386161469817658017}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1479946817 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 386161470756006112, guid: e084821fe50ed4690bd4358386a1f3ac,
@@ -1000,7 +988,7 @@ GameObject:
   - component: {fileID: 1612612167}
   - component: {fileID: 1612612168}
   m_Layer: 0
-  m_Name: Camera Follow Point
+  m_Name: Camera Focus Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1035,10 +1023,7 @@ MonoBehaviour:
   cameraRange: 30
   moonRange: 26.7
   starsRange: 28
-  _cam: {fileID: 0}
-  _moon: {fileID: 0}
-  _stars: {fileID: 0}
-  _slider: {fileID: 1390612819}
+  slider: {fileID: 0}
 --- !u!1 &1711050822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,6 +1183,11 @@ PrefabInstance:
       propertyPath: WTButton
       value: Exit
       objectReference: {fileID: 0}
+    - target: {fileID: 2666376396826672035, guid: 893e676440b9046bc9891d921c3397e2,
+        type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 893e676440b9046bc9891d921c3397e2, type: 3}
 --- !u!1 &1748635072
@@ -1211,6 +1201,7 @@ GameObject:
   - component: {fileID: 1748635074}
   - component: {fileID: 1748635073}
   - component: {fileID: 1748635075}
+  - component: {fileID: 1748635076}
   m_Layer: 0
   m_Name: Black Screen
   m_TagString: Untagged
@@ -1299,6 +1290,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1748635076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748635072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24caf1c30b6d34f3db987a9074947290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1785438865 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2666376396826672032, guid: 893e676440b9046bc9891d921c3397e2,
@@ -1643,7 +1646,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manaSpeed: 1
   maxMana: 100
-  spawnPoint: {fileID: 0}
 --- !u!1001 &386161469817658017
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1764,7 +1766,7 @@ PrefabInstance:
     - target: {fileID: 386161470756006113, guid: e084821fe50ed4690bd4358386a1f3ac,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 386161470756006115, guid: e084821fe50ed4690bd4358386a1f3ac,
         type: 3}
@@ -1779,17 +1781,17 @@ PrefabInstance:
     - target: {fileID: 386161470903550930, guid: e084821fe50ed4690bd4358386a1f3ac,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 386161470903550930, guid: e084821fe50ed4690bd4358386a1f3ac,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 386161470903550930, guid: e084821fe50ed4690bd4358386a1f3ac,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 386161471422667435, guid: e084821fe50ed4690bd4358386a1f3ac,
         type: 3}
@@ -1948,7 +1950,7 @@ PrefabInstance:
     - target: {fileID: 3362828018800313685, guid: ea31bd5689a464231bcb0783842b2489,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3362828018800313685, guid: ea31bd5689a464231bcb0783842b2489,
         type: 3}

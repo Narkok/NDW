@@ -2,42 +2,60 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Button : MonoBehaviour
-{
-    private Animator _anim;
 
-    [SerializeField] private string WTButton; 
-    [SerializeField] private Sprite buttonSprite;
+public static class ButtonTypeExtention {
+    public static string Title(this Button.Type buttonType) {
+        switch (buttonType) {
+            case Button.Type.Start: { return "Start"; }
+            case Button.Type.Exit:  { return "Exit"; }
+            default: return "";
+        }
+    }
+}
+
+
+public class Button : MonoBehaviour {
+
+    public enum Type {
+        Start,
+        Exit
+    }
+
+
+    private Animator animator;
     private GameObject gameManager;
 
-    void Awake()
-    {
-        _anim = GetComponent<Animator>();
+    [SerializeField] private Type type;
+
+    // Эту штуку удалить надо и нормальным лейблом текст кнопки выставить
+    [SerializeField] private Sprite buttonSprite;
+
+
+    void Awake() {
+        animator = GetComponent<Animator>();
         GameObject button = transform.Find("Button").gameObject;
         button.GetComponent<SpriteRenderer>().sprite = buttonSprite;
         gameManager = transform.Find("/Game Manager").gameObject;
     }
 
-    public void OnMouseEnter()
-    {
-        _anim.SetBool("Hover", true);
+
+    public void OnMouseEnter() {
+        animator.SetBool("Hover", true);
     }
 
-    public void OnMouseExit()
-    {
-        _anim.SetBool("Hover", false);
+
+    public void OnMouseExit() {
+        animator.SetBool("Hover", false);
     }
 
-    public void OnMouseDown()
-    {
-        _anim.SetBool("Press", true);
-        StartCoroutine(ButtonUnpress());
-        gameManager.GetComponent<GameLaunchManager>().ButtonPressed(WTButton);
+
+    public void OnMouseUp() {
+        animator.SetBool("Press", false);
     }
 
-    public IEnumerator ButtonUnpress()
-    {
-        yield return new WaitForSeconds(0.2f);
-        _anim.SetBool("Press", false);
+
+    public void OnMouseDown() {
+        animator.SetBool("Press", true);
+        gameManager.GetComponent<GameManager>().ButtonPressed(type);
     }
 }

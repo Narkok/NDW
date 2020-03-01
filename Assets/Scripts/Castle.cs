@@ -7,7 +7,7 @@ public class Castle : MonoBehaviour
 {
     [SerializeField] private int manaSpeed = 1;
     [SerializeField] private int maxMana = 100;
-    [SerializeField] private Transform spawnPoint;
+    private Transform spawnPoint;
 
     void Start()
     {
