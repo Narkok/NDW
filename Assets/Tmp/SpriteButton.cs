@@ -8,33 +8,36 @@ public class SpriteButton: MonoBehaviour {
 
     private Castle playerCastle;
     private bool clickIsValid = false;
+    private Vector3 initialScale;
 
 
     private void Awake() {
         playerCastle = FindObjectOfType<PlayerCastle>().GetComponent<Castle>();
+        initialScale = transform.localScale;
     }
 
 
     private void OnMouseEnter() {
         clickIsValid = true;
-        SetAlpha(0.9f);
+        SetAlpha(0.8f);
     }
 
 
     private void OnMouseExit() {
         clickIsValid = false;
         SetAlpha(1);
+        SetScale(1);
     }
 
 
     private void OnMouseDown() {
-        SetAlpha(0.8f);
+        SetScale(0.95f);
     }
 
 
     private void OnMouseUp() {
         if (clickIsValid) {
-            SetAlpha(0.9f);
+            SetScale(1);
             playerCastle.Spawn(character);
         }
     }
@@ -44,5 +47,10 @@ public class SpriteButton: MonoBehaviour {
         Color color = GetComponent<SpriteRenderer>().color;
         color.a = alpha;
         GetComponent<SpriteRenderer>().color = color;
+    }
+
+
+    private void SetScale(float scale) {
+        transform.localScale = initialScale * scale;
     }
 }
