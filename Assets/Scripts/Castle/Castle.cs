@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Castle : MonoBehaviour
-{
+public class Castle: MonoBehaviour {
+
     [SerializeField] private int manaSpeed = 1;
     [SerializeField] private int maxMana = 100;
+
+
     private Transform spawnPoint;
 
-    void Start()
-    {
+
+    void Awake() {
         spawnPoint = transform.Find("Spawn Point");
     }
 
-    public void Spawn(Character.Type type)
-    {
+
+    public void Spawn(Character.Type type) {
         Debug.Log(type);
     }
 }

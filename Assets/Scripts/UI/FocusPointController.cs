@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FocusPointController : MonoBehaviour {
+public class FocusPointController: MonoBehaviour {
 
     public float cameraRange = 30;
     public float moonRange = 3.2f;

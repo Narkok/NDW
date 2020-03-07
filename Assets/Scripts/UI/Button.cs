@@ -4,6 +4,7 @@ using UnityEngine;
 
 
 public static class ButtonTypeExtention {
+
     public static string Title(this Button.Type buttonType) {
         switch (buttonType) {
             case Button.Type.Start: { return "Start"; }
@@ -14,7 +15,7 @@ public static class ButtonTypeExtention {
 }
 
 
-public class Button : MonoBehaviour {
+public class Button: MonoBehaviour {
 
     public enum Type {
         Start,

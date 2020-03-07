@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
+public class GameManager: MonoBehaviour {
 
     [SerializeField] private GameObject blackScreen;
     [SerializeField] private GameObject startMenuButtons;
     [SerializeField] private GameObject canvas;
     [SerializeField] private bool skipMenu = false;
+
 
     void Awake() {
         blackScreen.SetActive(true);

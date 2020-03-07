@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RollerController : MonoBehaviour
-{
+public class RollerController: MonoBehaviour {
 
     private Animator _anim;
     private GameObject _slider;
@@ -11,37 +10,35 @@ public class RollerController : MonoBehaviour
     private bool isPressed = false;
     private bool isHovered = false;
 
-    void Start()
-    {
+
+    void Start() {
         _slider = GameObject.Find("Slider");
         _anim = _slider.GetComponent<Animator>();
     }
 
-    void OnMouseEnter()
-    {
+
+    void OnMouseEnter() {
         isHovered = true;
         _anim.SetBool("Hover", true);
     }
 
-    private void OnMouseDown()
-    {
+
+    private void OnMouseDown() {
         isPressed = true;
     }
 
-    private void OnMouseExit()
-    {
+
+    private void OnMouseExit() {
         isHovered = false;
-        if (!isPressed)
-        {
+        if (!isPressed) {
             _anim.SetBool("Hover", false);
         }
     }
 
-    void OnMouseUp()
-    {
+
+    void OnMouseUp() {
         isPressed = false;
-        if (!isHovered)
-        {
+        if (!isHovered) {
             _anim.SetBool("Hover", false);
         }
     }

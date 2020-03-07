@@ -4,11 +4,16 @@ using System.Linq;
 using UnityEngine;
 
 
-public class Character : MonoBehaviour {
+public class Character: MonoBehaviour {
 
     public enum Type {
         Knight,
+        Crusader,
         Archer,
+        Cavalier,
+        Sentinel,
+        Wizard,
+        Cannon, 
         King
     }
 
